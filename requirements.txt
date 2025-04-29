@@ -1,10 +1,11 @@
 streamlit>=1.26.0
 pandas>=1.5.0
+pytesseract>=0.3.10
 pillow>=9.0.0
 gspread>=5.10.0
 google-auth>=2.22.0
 gspread-dataframe>=3.3.1
-pytz
-python-dateutil
-pyyaml
-pytesseract
+python-dateutil>=2.8.2
+pytz>=2023.3
+pyyaml>=6.0
+opencv-python-headless>=4.8.0
