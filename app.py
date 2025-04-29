@@ -5,6 +5,7 @@ import io
 import re
 from datetime import datetime
 import os
+import pytesseract
 from urllib.parse import urlencode
 import gspread
 from google.oauth2 import service_account
