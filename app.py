@@ -132,7 +132,8 @@ if menu_id is None:
                 menu_id = f"{date_str}_{timestamp}"
                 try:
 
-                    base_url = "http://localhost:8509"  # Change this to your deployed URL
+                   # base_url = "http://localhost:8509"  # Change this to your deployed URL 
+                    base_url = "https://mycloudkitchen.streamlit.app/" # deployed URL
                     order_link = f"{base_url}?menu_id={menu_id}"
 
                     sheet_url = save_menu_to_sheets(edited_df, menu_id,order_link,extracted_date_obj)
