@@ -13,8 +13,14 @@ python-dateutil>=2.8.2
 pytz>=2023.3
 pyyaml>=6.0
 opencv-python-headless>=4.8.0
+<<<<<<< HEAD
 =======
 pytz
 python-dateutil
 pyyaml
 >>>>>>> 71f3ed5c (Initial commit for myCloudKitchen app)
+=======
+duckdb>=1.2.2
+stripe==7.0.0
+python-dotenv==1.0.0
+>>>>>>> 7c7f0f07 (ModifiedPush)

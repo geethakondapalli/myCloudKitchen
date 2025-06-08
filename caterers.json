@@ -1,0 +1,32 @@
+{
+    "admin@catercloud.com": {
+        "password": "admin123",
+        "name": "Admin User",
+        "role": "admin",
+        "status": "active"
+    },
+    "caterer1@example.com": {
+        "password": "caterer123",
+        "name": "Delhi Kitchen",
+        "role": "caterer",
+        "status": "active",
+        "address": "123 Food St, Delhi",
+        "phone": "9876543210",
+        "specialties": [
+            "North Indian",
+            "Street Food"
+        ]
+    },
+    "caterer2@example.com": {
+        "password": "caterer456",
+        "name": "South Spice",
+        "role": "caterer",
+        "status": "active",
+        "address": "456 Curry Ave, Chennai",
+        "phone": "8765432109",
+        "specialties": [
+            "South Indian",
+            "Biryani"
+        ]
+    }
+}

@@ -2,7 +2,7 @@
 import streamlit as st
 from restaurant_config import RESTAURANT_CONFIG, ADMIN_CONFIG
 # Set up Streamlit page
-st.set_page_config(page_title=f"{RESTAURANT_CONFIG['name']} - Admin-Setup Details ")
+#st.set_page_config(page_title=f"{RESTAURANT_CONFIG['name']} - Admin-Setup Details ")
 st.header("👩‍💼 Welcome to Admin Panel - Set up Details")   
 
 with st.expander("ℹ️ Setup Instructions"):

@@ -2,9 +2,14 @@ import re
 
 def validate_name(name):
     """Validate customer name"""
-    if not name.strip():
+    if not name.strip() and len(name)<3 :
         return False, "Name is required"
-    return True, ""
+    elif len(name.strip()) < 3:
+        return False, "Name must be at least 3 characters"
+    elif not name.strip().replace(" ", "").isalpha():
+        return False, "Name can only contain letters and spaces"
+    else :
+        return True, ""
 
 def validate_phone(phone):
     """Validate phone number"""

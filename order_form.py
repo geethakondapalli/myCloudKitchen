@@ -8,7 +8,18 @@ from datetime import datetime
 import os
 from urllib.parse import urlencode
 
-st.set_page_config(page_title="Flavors of India - Admin & Order Form")
+date_formats = [
+    '%d/%m/%Y',       # 23/04/2025
+    '%m/%d/%Y',       # 04/23/2025
+    '%d-%m-%Y',       # 23-04-2025
+    '%m-%d-%Y',       # 04-23-2025
+    '%B %d, %Y',      # April 23, 2025
+    '%d %B %Y',       # 23 April 2025
+    '%d-%b-%y',       # 1-APR-25 (this is the one you need)
+    '%d-%b-%Y',       # 1-APR-2025
+    '%d/%b/%y',       # 1/APR/25
+    '%d/%b/%Y'        # 1/APR/2025
+]
 
 # Read query parameters
 params = st.query_params

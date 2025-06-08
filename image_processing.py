@@ -43,6 +43,40 @@ def extract_highlighted_text(image):
     
     return all_text
 
+def extract_price(line, currency_symbol='£'):
+    # First extract the item name and raw price section
+    parts_pattern = rf"(.+?)\s*[-–—]\s*{re.escape(currency_symbol)}\s*(.*)"
+    parts_match = re.match(parts_pattern, line)
+    
+    if parts_match:
+        item = parts_match.group(1).strip()
+        price_section = parts_match.group(2).strip()
+        
+        # Then extract just the numbers from the price section
+        price_pattern = r'(\d+)(?:\.(\d{1,2}))?'
+        price_match = re.match(price_pattern, price_section)
+        
+        if price_match:
+            # Get whole pounds and pence separately
+            pounds = price_match.group(1)
+            pence = price_match.group(2) if price_match.group(2) else '00'
+            
+            # Construct full price
+            price_str = f"{pounds}.{pence.ljust(2, '0')}"
+            price = float(price_str)
+            
+            print(f"Item: '{item}'")
+            print(f"Price section: '{price_section}'")
+            print(f"Pounds: '{pounds}', Pence: '{pence}'")
+            print(f"Constructed price: '{price_str}'")
+            print(f"Final price: {price:.2f}")
+            
+            return item, price
+        
+    return None,None
+    
+
+
 def extract_menu_from_image(image):
     """Extract menu items, prices, and date from an uploaded image
     Returns: (menu_dataframe, extracted_date_string, success_flag)
@@ -90,14 +124,13 @@ def extract_menu_from_image(image):
     # Extract menu items
     menu_items = []
     currency_symbol = RESTAURANT_CONFIG['currency']
-    price_pattern = rf"(.+?)\s*[-–—]\s*{re.escape(currency_symbol)}\s*(\d+(?:\.\d{1,2})?)"
+    price_pattern = rf"(.+?)\s*[-–—]\s*{re.escape(currency_symbol)}\s*(\d+\s*(?:\.\s*\d{1,2})?)"
+    
     
     for line in regular_lines:
-        match = re.match(price_pattern, line, re.IGNORECASE)
-        if match:
-            item = match.group(1).strip()
-            price = float(match.group(2).strip())
-            menu_items.append({"Item": item, "Price": price})
+            item,price =extract_price(line)
+            if item and price:
+                menu_items.append({"Item": item, "Price": price})
     
     # Create the DataFrame
     menu_df = pd.DataFrame(menu_items)
