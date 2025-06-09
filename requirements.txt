@@ -13,3 +13,4 @@ pytz
 python-dateutil
 pyyaml
 python-dotenv==1.0.0
+pytesseract
